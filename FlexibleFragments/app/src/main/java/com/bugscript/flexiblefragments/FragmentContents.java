@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import butterknife.Unbinder;
 
 /**
  * Created by syamsundark on 10/01/18.
@@ -16,6 +19,7 @@ public class FragmentContents extends Fragment {
 
     public int mColors = 0;
     public int mValue = 0;
+    private Unbinder unbinder;
 
     public FragmentContents() {
     }
@@ -27,6 +31,13 @@ public class FragmentContents extends Fragment {
 
         View colorChangingView=rootView.findViewById(R.id.view);
         TextView textView=rootView.findViewById(R.id.textView);
+
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Clicked on:"+mValue,Toast.LENGTH_LONG).show();
+            }
+        });
 
         switch (mColors){
             case 0:
