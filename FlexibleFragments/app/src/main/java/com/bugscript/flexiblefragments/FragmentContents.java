@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by syamsundark on 10/01/18.
@@ -25,6 +26,7 @@ public class FragmentContents extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_body, container, false);
 
         View colorChangingView=rootView.findViewById(R.id.view);
+        TextView textView=rootView.findViewById(R.id.textView);
 
         switch (mColors){
             case 0:
@@ -37,6 +39,8 @@ public class FragmentContents extends Fragment {
                 colorChangingView.setBackgroundColor(getResources().getColor(R.color.blue));
                 break;
         }
+
+        textView.setText("Fragment #"+mValue);
 
         return rootView;
     }
