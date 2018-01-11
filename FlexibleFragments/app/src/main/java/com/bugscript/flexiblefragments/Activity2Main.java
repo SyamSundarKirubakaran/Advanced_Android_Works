@@ -22,7 +22,7 @@ public class Activity2Main extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction()
-                .add(R.id.activity_2_fragment_layout, landscapeContents)
+                .replace(R.id.activity_2_fragment_layout, landscapeContents)
                 .commit();
     }
 }

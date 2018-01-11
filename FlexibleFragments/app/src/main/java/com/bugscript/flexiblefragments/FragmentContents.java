@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class FragmentContents extends Fragment {
 
-    public int mColors = 1;
+    public int mColors = 0;
     public int mValue = 0;
 
     public FragmentContents() {
