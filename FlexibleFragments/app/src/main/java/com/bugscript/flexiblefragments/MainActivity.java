@@ -15,13 +15,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            FragmentContents contents_1 = new FragmentContents();
+            LandscapeContents landscapeContents=new LandscapeContents();
             FragmentManager fragmentManager = getSupportFragmentManager();
 
-            contents_1.setmColors(0);
-            contents_1.setmValue(0);
             fragmentManager.beginTransaction()
-                    .add(R.id.container_1, contents_1)
+                    .add(R.id.container_1, landscapeContents)
                     .commit();
 
             FrameLayout frameLayout2=findViewById(R.id.container_2);

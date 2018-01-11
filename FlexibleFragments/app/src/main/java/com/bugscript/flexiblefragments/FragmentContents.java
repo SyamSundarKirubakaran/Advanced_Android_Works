@@ -19,7 +19,7 @@ public class FragmentContents extends Fragment {
 
     public int mColors = 0;
     public int mValue = 0;
-    private Unbinder unbinder;
+    public Toast t;
 
     public FragmentContents() {
     }
@@ -35,7 +35,11 @@ public class FragmentContents extends Fragment {
         rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Clicked on:"+mValue,Toast.LENGTH_LONG).show();
+                if(t!=null){
+                    t.cancel();
+                }else {
+                    t.makeText(getContext(),"Clicked on:"+mValue,Toast.LENGTH_LONG).show();
+                }
             }
         });
 
