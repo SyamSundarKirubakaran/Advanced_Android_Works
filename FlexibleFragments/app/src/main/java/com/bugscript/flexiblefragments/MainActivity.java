@@ -1,18 +1,26 @@
 package com.bugscript.flexiblefragments;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  FragmentContents.OnFragmentClickListener{
+
+    public Button button;
+    public static int final_position=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button=findViewById(R.id.next_button);
 
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             LandscapeContents landscapeContents=new LandscapeContents();
@@ -61,6 +69,22 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .add(R.id.container_4, contents_4)
                     .commit();
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(MainActivity.this,Activity2Main.class);
+                    i.putExtra("index",final_position);
+                    startActivity(i);
+                }
+            });
+
         }
+    }
+
+    @Override
+    public void onFragmentSelected(int position) {
+        Toast.makeText(MainActivity.this,"Toast from Main Activity: #"+position,Toast.LENGTH_LONG).show();
+        final_position=position;
     }
 }
