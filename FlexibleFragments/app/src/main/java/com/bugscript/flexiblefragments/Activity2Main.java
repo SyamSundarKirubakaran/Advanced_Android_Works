@@ -16,11 +16,9 @@ public class Activity2Main extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2_fragment);
-        int index=getIntent().getExtras().getInt("index");
         LandscapeContents landscapeContents=new LandscapeContents();
-        landscapeContents.mSetLabel(index);
+        landscapeContents.mSetLabel(MainActivity.final_position);
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         fragmentManager.beginTransaction()
                 .replace(R.id.activity_2_fragment_layout, landscapeContents)
                 .commit();

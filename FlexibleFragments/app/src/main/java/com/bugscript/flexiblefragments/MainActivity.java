@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements  FragmentContents
                     .commit();
         }else {
             Intent i = new Intent(MainActivity.this, Activity2Main.class);
-            i.putExtra("index", position);
+            final_position=position;
             startActivity(i);
         }
     }
