@@ -32,4 +32,11 @@ public class ActivityMainSimpleTest {
         onView(withId(R.id.textView)).check(matches(withText("1")));
     }
 
+    @Test
+    public void testOnActivityTransition(){
+        onView(withId(R.id.imageView2)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.textView2)).check(matches(withText("0")));
+    }
+
 }

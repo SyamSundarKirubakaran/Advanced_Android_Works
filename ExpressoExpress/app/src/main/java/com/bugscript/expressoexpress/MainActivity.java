@@ -1,5 +1,6 @@
 package com.bugscript.expressoexpress;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -39,5 +40,12 @@ public class MainActivity extends AppCompatActivity {
             i -= 1;
             mNumber.setText(i+"");
         }
+    }
+
+    @OnClick(R.id.button)
+    public void transition(){
+        Intent s=new Intent(MainActivity.this,SecondActivity.class);
+        s.putExtra("number",i);
+        startActivity(s);
     }
 }

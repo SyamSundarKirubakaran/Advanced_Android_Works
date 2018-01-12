@@ -38,4 +38,13 @@
         android:layout_toLeftOf="@+id/textView"
         android:layout_toStartOf="@+id/textView"
         android:src="@drawable/ic_call_received_black_24dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp"
+        android:text="Send Data" />
 </RelativeLayout>
