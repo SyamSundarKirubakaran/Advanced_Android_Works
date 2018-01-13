@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bugscript.widgetgadget.provider.ContractClass;
+import com.bugscript.widgetgadget.services.ChangeImageService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 //        ContentValues cv = new ContentValues();
 //        cv.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 1);
 //        Uri uri=getContentResolver().insert(ContractClass.nameClass.CONTENT_URI,cv);
-        
+
         Cursor cursor=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
                 null,
                 null,
@@ -65,26 +66,31 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues cv = new ContentValues();
                         cv.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 1);
                         getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cv,null,null);
+                        ChangeImageService.startChangingImage(MainActivity.this);
                         break;
                     case R.id.google:
                         ContentValues cp = new ContentValues();
                         cp.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 2);
                         getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cp,null,null);
+                        ChangeImageService.startChangingImage(MainActivity.this);
                         break;
                     case R.id.benz:
                         ContentValues ca = new ContentValues();
                         ca.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 3);
                         getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),ca,null,null);
+                        ChangeImageService.startChangingImage(MainActivity.this);
                         break;
                     case R.id.apple:
                         ContentValues cb = new ContentValues();
                         cb.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 4);
                         getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cb,null,null);
+                        ChangeImageService.startChangingImage(MainActivity.this);
                         break;
                     case R.id.facebook:
                         ContentValues cc = new ContentValues();
                         cc.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 5);
                         getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cc,null,null);
+                        ChangeImageService.startChangingImage(MainActivity.this);
                         break;
                 }
             }

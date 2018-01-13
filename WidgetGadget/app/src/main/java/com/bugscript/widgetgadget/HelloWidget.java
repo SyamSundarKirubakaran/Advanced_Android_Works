@@ -5,7 +5,10 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.RemoteViews;
+
+import com.bugscript.widgetgadget.services.ChangeImageService;
 
 /**
  * Implementation of App Widget functionality.
@@ -13,7 +16,7 @@ import android.widget.RemoteViews;
 public class HelloWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+                                int imgRes,int appWidgetId) {
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.android_widget);
@@ -22,6 +25,24 @@ public class HelloWidget extends AppWidgetProvider {
         PendingIntent pendingIntent=PendingIntent.getActivity(context,0,intent,0);
         views.setOnClickPendingIntent(R.id.widget_git_image,pendingIntent);
 
+        switch (imgRes){
+            case 1:
+                views.setImageViewResource(R.id.widget_git_image, R.drawable.github_img);
+                break;
+            case 2:
+                views.setImageViewResource(R.id.widget_git_image, R.drawable.google);
+                break;
+            case 3:
+                views.setImageViewResource(R.id.widget_git_image, R.drawable.benz);
+                break;
+            case 4:
+                views.setImageViewResource(R.id.widget_git_image, R.drawable.apple);
+                break;
+            case 5:
+                views.setImageViewResource(R.id.widget_git_image, R.drawable.facebook);
+                break;
+        }
+
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
@@ -29,8 +50,12 @@ public class HelloWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
+        ChangeImageService.startChangingImage(context);
+    }
+
+    public static void updateWidgetImage(Context context,AppWidgetManager appWidgetManager,int imgRes, int[] appWidgetIds){
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
+            updateAppWidget(context, appWidgetManager,imgRes, appWidgetId);
         }
     }
 

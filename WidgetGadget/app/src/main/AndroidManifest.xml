@@ -26,6 +26,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/hello_widget_info" />
         </receiver>
+
+        <service android:name="com.bugscript.widgetgadget.services.ChangeImageService" />
+
         <provider
             android:authorities="com.bugscript.widgetgadget"
             android:name="com.bugscript.widgetgadget.provider.ContentProvider"
