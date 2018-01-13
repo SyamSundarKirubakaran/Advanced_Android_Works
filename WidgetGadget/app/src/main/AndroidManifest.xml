@@ -26,6 +26,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/hello_widget_info" />
         </receiver>
+        <provider
+            android:authorities="com.bugscript.widgetgadget"
+            android:name="com.bugscript.widgetgadget.provider.ContentProvider"
+            android:exported="true" />
     </application>
 
 </manifest>
