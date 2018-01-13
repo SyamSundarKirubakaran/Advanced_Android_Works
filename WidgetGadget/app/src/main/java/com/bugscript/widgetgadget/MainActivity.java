@@ -25,25 +25,66 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button=findViewById(R.id.button);
         radioGroup=findViewById(R.id.radioGroup);
-        radioGroup.check(R.id.github);
+
+//        DO THIS ONLY ONCE FOR INIT VALUE OF _ID = 1
+//        ContentValues cv = new ContentValues();
+//        cv.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 1);
+//        Uri uri=getContentResolver().insert(ContractClass.nameClass.CONTENT_URI,cv);
+        
+        Cursor cursor=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToNext();
+        switch (cursor.getInt(cursor.getColumnIndex(ContractClass.nameClass.COLUMN_PERSON_NAME))){
+            case 1:
+                radioGroup.check(R.id.github);
+                break;
+            case 2:
+                radioGroup.check(R.id.google);
+                break;
+            case 3:
+                radioGroup.check(R.id.benz);
+                break;
+            case 4:
+                radioGroup.check(R.id.apple);
+                break;
+            case 5:
+                radioGroup.check(R.id.facebook);
+                break;
+            default:
+                Toast.makeText(MainActivity.this,"Unable to make Check",Toast.LENGTH_LONG).show();
+        }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.github:
-                        Toast.makeText(MainActivity.this,"Github",Toast.LENGTH_SHORT).show();
+                        ContentValues cv = new ContentValues();
+                        cv.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 1);
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cv,null,null);
                         break;
                     case R.id.google:
-                        Toast.makeText(MainActivity.this,"Google",Toast.LENGTH_SHORT).show();
+                        ContentValues cp = new ContentValues();
+                        cp.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 2);
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cp,null,null);
                         break;
                     case R.id.benz:
-                        Toast.makeText(MainActivity.this,"Benz",Toast.LENGTH_SHORT).show();
+                        ContentValues ca = new ContentValues();
+                        ca.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 3);
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),ca,null,null);
                         break;
                     case R.id.apple:
-                        Toast.makeText(MainActivity.this,"Apple",Toast.LENGTH_SHORT).show();
+                        ContentValues cb = new ContentValues();
+                        cb.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 4);
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cb,null,null);
                         break;
                     case R.id.facebook:
-                        Toast.makeText(MainActivity.this,"Facebook",Toast.LENGTH_SHORT).show();
+                        ContentValues cc = new ContentValues();
+                        cc.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 5);
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cc,null,null);
                         break;
                 }
             }
@@ -51,14 +92,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ContentValues cv = new ContentValues();
-                cv.put(ContractClass.nameClass.COLUMN_PERSON_NAME, 1);
-                int result=getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cv,null,null);
-                if(result>0){
-                    Toast.makeText(MainActivity.this,"Content Updated..",Toast.LENGTH_LONG).show();
-                }
-
                 Cursor sample=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
                         null,
                         null,
