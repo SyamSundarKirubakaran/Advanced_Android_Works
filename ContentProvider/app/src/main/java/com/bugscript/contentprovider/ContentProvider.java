@@ -40,7 +40,24 @@ public class ContentProvider extends android.content.ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        return null;
+        final SQLiteDatabase db= mdbHelper.getReadableDatabase();
+        int match=sUriMatcher.match(uri);
+        Cursor retCursor;
+        switch (match){
+            case PERSONS:
+                retCursor=db.query(ContractClass.nameClass.TABLENAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unsupported Operation");
+        }
+        retCursor.setNotificationUri(getContext().getContentResolver(),uri);
+        return retCursor;
     }
 
     @Nullable
@@ -75,7 +92,20 @@ public class ContentProvider extends android.content.ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+       final SQLiteDatabase db=mdbHelper.getWritableDatabase();
+       int match=sUriMatcher.match(uri);
+       int performed;
+        switch (match){
+            case PERSONS:
+                performed=db.delete(ContractClass.nameClass.TABLENAME,null,null);
+                break;
+            case PERSON_WITH_ID:
+                performed=db.delete(ContractClass.nameClass.TABLENAME,selection,selectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unkonwn uri:"+uri);
+        }
+       return performed;
     }
 
     @Override
