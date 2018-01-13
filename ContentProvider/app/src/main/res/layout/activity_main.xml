@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bugscript.contentprovider.MainActivity">
+    tools:context="com.bugscript.contentprovider.MainActivity"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:text="SQLite Test"
+        android:id="@+id/sqliteLabel"
+        android:textColor="@color/colorAccent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:padding="16dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center">
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/insertData"
+            android:layout_marginLeft="8dp"
+            android:hint="Insert"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/insertChecked"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_check_box_black_24dp"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+
+</LinearLayout>
