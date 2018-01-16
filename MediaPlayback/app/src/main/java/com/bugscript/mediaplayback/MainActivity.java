@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldAutoPlay;
     private BandwidthMeter bandwidthMeter;
 
-    private ImageView ivHideControllerButton;
 
 
     @Override
@@ -45,13 +44,12 @@ public class MainActivity extends AppCompatActivity {
         bandwidthMeter = new DefaultBandwidthMeter();
         mediaDataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "mediaPlayerSample"), (TransferListener<? super DataSource>) bandwidthMeter);
         window = new Timeline.Window();
-        ivHideControllerButton = (ImageView) findViewById(R.id.exo_controller);
 
     }
 
     private void initializePlayer() {
 
-        simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.player_view);
+        simpleExoPlayerView = findViewById(R.id.player_view);
         simpleExoPlayerView.requestFocus();
 
         TrackSelection.Factory videoTrackSelectionFactory =
@@ -64,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         simpleExoPlayerView.setPlayer(player);
 
         player.setPlayWhenReady(shouldAutoPlay);
-/*        MediaSource mediaSource = new HlsMediaSource(Uri.parse("https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"),
-                mediaDataSourceFactory, mainHandler, null);*/
 
         DefaultExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
 
@@ -73,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 mediaDataSourceFactory, extractorsFactory, null, null);
 
         player.prepare(mediaSource);
-
-        ivHideControllerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                simpleExoPlayerView.hideController();
-            }
-        });
     }
 
     private void releasePlayer() {
