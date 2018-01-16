@@ -29,6 +29,11 @@
 
         <service android:name=".services.ChangeContentsService"/>
 
+        <provider
+            android:authorities="com.bugscript.listwidget"
+            android:name="com.bugscript.listwidget.provider.ContentProvider"
+            android:exported="true" />
+
     </application>
 
 </manifest>

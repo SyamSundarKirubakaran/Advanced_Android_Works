@@ -67,18 +67,20 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Item Changed..",Toast.LENGTH_SHORT).show();
                         break;
                 }
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Cursor sample=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
-                                null,
-                                null,
-                                null,
-                                null
-                        );
-                        Toast.makeText(MainActivity.this,sample.getCount()+"",Toast.LENGTH_LONG).show();
-                    }
-                });
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor sample=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
+                        null,
+                        null,
+                        null,
+                        null
+                );
+                sample.moveToNext();
+                Toast.makeText(MainActivity.this,sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_VALUE))+"",Toast.LENGTH_LONG).show();
             }
         });
 
