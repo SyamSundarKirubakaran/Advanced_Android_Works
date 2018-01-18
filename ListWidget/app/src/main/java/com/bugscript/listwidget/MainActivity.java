@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getContentsFromJson();
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -118,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         WidgetList.sendRefreshBroadcast(this);
-
     }
 
     private void getContentsFromJson()  {
@@ -173,6 +173,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             ChangeContentsService.startChangingList(this);
+//            ContentValues contentValues = new ContentValues();
+//            for(int i=0;i<dishNames.length;i++){
+//                for(int j=0;j<ingredient[i].length;j++){
+//                    contentValues.put(ContractClass.nameClass.COLUMN_INGRED_KEY,i);
+//                    contentValues.put(ContractClass.nameClass.COLUMN_INGRED_VALUE,ingredient[i][j]);
+//                    contentValues.put(ContractClass.nameClass.COLUMN_INGRED_MEASURE,measure[i][j]);
+//                    contentValues.put(ContractClass.nameClass.COLUMN_INGRED_QUANTITY,quantity[i][j]);
+//                    getContentResolver().insert(ContractClass.nameClass.CONTENT_URI,contentValues);
+//                }
+//            }
+
         }catch (JSONException e){
             Toast.makeText(MainActivity.this,"JSON parsing Exception",Toast.LENGTH_SHORT).show();
         }

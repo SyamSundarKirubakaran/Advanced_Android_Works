@@ -1,9 +1,11 @@
 package com.bugscript.listwidget.provider;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -67,12 +69,43 @@ public class ContentProvider  extends android.content.ContentProvider{
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        return null;
+        final SQLiteDatabase db=mdbHelper.getWritableDatabase();
+        int match=sUriMatcher.match(uri);
+        Uri returnUri;
+        switch (match){
+            case INGRED:
+                long id=db.insert(ContractClass.nameClass.TABLENAME,null,values);
+                if(id>0){
+                    returnUri = ContentUris.withAppendedId(ContractClass.nameClass.CONTENT_URI,id);
+                }else{
+                    throw new SQLException("Failed to insert row: "+uri);
+                }
+                break;
+            default:
+                throw new UnsupportedOperationException("Unkonwn uri:"+uri);
+        }
+
+        getContext().getContentResolver().notifyChange(uri, null);
+
+        return returnUri;
     }
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        final SQLiteDatabase db=mdbHelper.getWritableDatabase();
+        int match=sUriMatcher.match(uri);
+        int performed;
+        switch (match){
+            case INGRED:
+                performed=db.delete(ContractClass.nameClass.TABLENAME,null,null);
+                break;
+            case INGRED_WITH_ID:
+                performed=db.delete(ContractClass.nameClass.TABLENAME,selection,selectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unkonwn uri:"+uri);
+        }
+        return performed;
     }
 
     @Override

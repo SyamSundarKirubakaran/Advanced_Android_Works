@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getContentResolver().delete(ContractClass.nameClass.CONTENT_URI,null,null);
-//                getContentResolver().delete(ContractClass.nameClass.CONTENT_URI,"_id=?", new String[]{"9"});
+//                getContentResolver().delete(ContractClass.nameClass.CONTENT_URI,"_id=?", new String[]{"1"});
                 updateList();
             }
         });
