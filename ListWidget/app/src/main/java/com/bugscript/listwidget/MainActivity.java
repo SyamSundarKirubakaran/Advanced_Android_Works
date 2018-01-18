@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     public static String [][] thumbnailURL;
     public static String [] servings;
 
-    public static final String ACTION_CONVERT_LIST = "com.bugscript.widgetgadget.services.action.changeimageresource";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +48,56 @@ public class MainActivity extends AppCompatActivity {
         radioGroup=findViewById(R.id.radioGroup);
         radioGroup.check(R.id.nutella);
 
+        Cursor sample=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+        );
+        sample.moveToNext();
+        switch (sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_VALUE))){
+            case "Nutella":
+                radioGroup.check(R.id.nutella);
+                break;
+            case "Brownies":
+                radioGroup.check(R.id.brownies);
+                break;
+            case "Yellow Cake":
+                radioGroup.check(R.id.yellow);
+                break;
+            case "Cheese Cake":
+                radioGroup.check(R.id.cheesecake);
+                break;
+        }
+
         getContentsFromJson();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.nutella:
-                        Toast.makeText(MainActivity.this,"Item Changed..",Toast.LENGTH_SHORT).show();
+                        ContentValues cv = new ContentValues();
+                        cv.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Nutella");
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cv,null,null);
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.brownies:
-                        Toast.makeText(MainActivity.this,"Item Changed..",Toast.LENGTH_SHORT).show();
+                        ContentValues cb = new ContentValues();
+                        cb.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Brownies");
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cb,null,null);
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.yellow:
-                        Toast.makeText(MainActivity.this,"Item Changed..",Toast.LENGTH_SHORT).show();
+                        ContentValues cz = new ContentValues();
+                        cz.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Yellow Cake");
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cz,null,null);
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.cheesecake:
-                        Toast.makeText(MainActivity.this,"Item Changed..",Toast.LENGTH_SHORT).show();
+                        ContentValues cq = new ContentValues();
+                        cq.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Cheese Cake");
+                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cq,null,null);
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                 }
             }
@@ -83,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_VALUE))+"",Toast.LENGTH_LONG).show();
             }
         });
+
+        WidgetList.sendRefreshBroadcast(this);
 
     }
 
@@ -137,9 +172,7 @@ public class MainActivity extends AppCompatActivity {
                     thumbnailURL[i][j]=jw.getString("thumbnailURL");
                 }
             }
-            Intent intent = new Intent(getApplicationContext(), ChangeContentsService.class);
-            intent.setAction(ACTION_CONVERT_LIST);
-            getBaseContext().startService(intent);
+            ChangeContentsService.startChangingList(this);
         }catch (JSONException e){
             Toast.makeText(MainActivity.this,"JSON parsing Exception",Toast.LENGTH_SHORT).show();
         }

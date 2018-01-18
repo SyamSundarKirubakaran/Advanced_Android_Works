@@ -2,42 +2,53 @@ package com.bugscript.listwidget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.RemoteViews;
+
+import com.bugscript.listwidget.services.ChangeContentsService;
 
 /**
  * Implementation of App Widget functionality.
  */
 public class WidgetList extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_list);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
-
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
+    public static final String EXTRA_LABEL = "TASK_TEXT";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
+            RemoteViews views = new RemoteViews(
+
+                    context.getPackageName(),
+                    R.layout.widget_list
+
+            );
+            Intent intent = new Intent(context, MyWidgetRemoteViewsService.class);
+            views.setRemoteAdapter(R.id.widgetListView, intent);
+            appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
 
-    @Override
-    public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
+
+    public static void sendRefreshBroadcast(Context context) {
+        Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.setComponent(new ComponentName(context, WidgetList.class));
+        context.sendBroadcast(intent);
     }
 
+
     @Override
-    public void onDisabled(Context context) {
-        // Enter relevant functionality for when the last widget is disabled
+    public void onReceive(final Context context, Intent intent) {
+        final String action = intent.getAction();
+        if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+            // refresh all your widgets
+            AppWidgetManager mgr = AppWidgetManager.getInstance(context);
+            ComponentName cn = new ComponentName(context, WidgetList.class);
+            mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn), R.id.widgetListView);
+        }
+        super.onReceive(context, intent);
     }
 }
 

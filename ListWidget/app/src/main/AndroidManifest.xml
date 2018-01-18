@@ -34,6 +34,9 @@
             android:name="com.bugscript.listwidget.provider.ContentProvider"
             android:exported="true" />
 
+        <service android:name=".MyWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"></service>
+
     </application>
 
 </manifest>
