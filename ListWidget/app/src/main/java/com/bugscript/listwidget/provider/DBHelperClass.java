@@ -27,14 +27,14 @@ public class DBHelperClass extends SQLiteOpenHelper {
                 ContractClass.nameClass.COLUMN_INGRED_MEASURE+" VARCHAR"+
                 ");";
 
-        final String INSERT_PLACEHOLDER_VALUES="INSERT INTO "+ContractClass.nameClass.TABLENAME+
-                " ("+ContractClass.nameClass.COLUMN_INGRED_KEY+"," +
-                ContractClass.nameClass.COLUMN_INGRED_VALUE+"," +
-                ContractClass.nameClass.COLUMN_INGRED_QUANTITY+","+
-                ContractClass.nameClass.COLUMN_INGRED_MEASURE+") VALUES(1,'Dummy','Dummy','Dummy');";
+//        final String INSERT_PLACEHOLDER_VALUES="INSERT INTO "+ContractClass.nameClass.TABLENAME+
+//                " ("+ContractClass.nameClass.COLUMN_INGRED_KEY+"," +
+//                ContractClass.nameClass.COLUMN_INGRED_VALUE+"," +
+//                ContractClass.nameClass.COLUMN_INGRED_QUANTITY+","+
+//                ContractClass.nameClass.COLUMN_INGRED_MEASURE+") VALUES(1,'Dummy','Dummy','Dummy');";
 
         db.execSQL(CREATE_TABLE_PERSONS);
-        db.execSQL(INSERT_PLACEHOLDER_VALUES);
+//        db.execSQL(INSERT_PLACEHOLDER_VALUES);
     }
 
     @Override
