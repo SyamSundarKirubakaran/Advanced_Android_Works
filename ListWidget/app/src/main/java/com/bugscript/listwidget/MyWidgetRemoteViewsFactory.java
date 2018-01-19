@@ -35,11 +35,13 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
             mCursor.close();
         }
 
+        String dummy=MainActivity.universalSelection;
+
         final long identityToken = Binder.clearCallingIdentity();
         mCursor = mContext.getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
                 null,
-                null,
-                null,
+                ContractClass.nameClass.COLUMN_INGRED_KEY + " =?",
+                new String[]{dummy},
                 null
         );
 

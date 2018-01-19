@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public static String [][] videoURL;
     public static String [][] thumbnailURL;
     public static String [] servings;
+    public static String universalSelection="0";
 
 
     @Override
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 //                null
 //        );
 //        sample.moveToNext();
-//        switch (sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_VALUE))){
+//        switch (sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_KEY))){
 //            case "Nutella":
 //                radioGroup.check(R.id.nutella);
 //                break;
@@ -77,28 +78,20 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.nutella:
-//                        ContentValues cv = new ContentValues();
-//                        cv.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Nutella");
-//                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cv,null,null);
-//                        WidgetList.sendRefreshBroadcast(MainActivity.this);
+                        universalSelection="0";
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.brownies:
-//                        ContentValues cb = new ContentValues();
-//                        cb.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Brownies");
-//                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cb,null,null);
-//                        WidgetList.sendRefreshBroadcast(MainActivity.this);
+                        universalSelection="1";
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.yellow:
-//                        ContentValues cz = new ContentValues();
-//                        cz.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Yellow Cake");
-//                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cz,null,null);
-//                        WidgetList.sendRefreshBroadcast(MainActivity.this);
+                        universalSelection="2";
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.cheesecake:
-//                        ContentValues cq = new ContentValues();
-//                        cq.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, "Cheese Cake");
-//                        getContentResolver().update(Uri.parse(ContractClass.nameClass.CONTENT_URI+"/1"),cq,null,null);
-//                        WidgetList.sendRefreshBroadcast(MainActivity.this);
+                        universalSelection="3";
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                 }
             }
@@ -172,19 +165,19 @@ public class MainActivity extends AppCompatActivity {
                     thumbnailURL[i][j]=jw.getString("thumbnailURL");
                 }
             }
-            ChangeContentsService.startChangingList(this);
-            ContentValues contentValues = new ContentValues();
-            for(int i=0;i<dishNames.length;i++){
-                for(int j=0;j<ingredient[i].length;j++){
-                    if(ingredient[i][j]!=null) {
-                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_KEY, i);
-                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, ingredient[i][j]);
-                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_MEASURE, measure[i][j]);
-                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_QUANTITY, quantity[i][j]);
-                        getContentResolver().insert(ContractClass.nameClass.CONTENT_URI, contentValues);
-                    }
-                }
-            }
+//            ChangeContentsService.startChangingList(this);
+//            ContentValues contentValues = new ContentValues();
+//            for(int i=0;i<dishNames.length;i++){
+//                for(int j=0;j<ingredient[i].length;j++){
+//                    if(ingredient[i][j]!=null) {
+//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_KEY, i);
+//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, ingredient[i][j]);
+//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_MEASURE, measure[i][j]);
+//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_QUANTITY, quantity[i][j]);
+//                        getContentResolver().insert(ContractClass.nameClass.CONTENT_URI, contentValues);
+//                    }
+//                }
+//            }
 
         }catch (JSONException e){
             Toast.makeText(MainActivity.this,"JSON parsing Exception",Toast.LENGTH_SHORT).show();
