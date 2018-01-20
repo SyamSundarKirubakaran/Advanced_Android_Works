@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bugscript.listwidget">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,7 +29,6 @@
                 android:resource="@xml/widget_list_info" />
         </receiver>
 
-        <service android:name=".services.ChangeContentsService"/>
 
         <provider
             android:authorities="com.bugscript.listwidget"

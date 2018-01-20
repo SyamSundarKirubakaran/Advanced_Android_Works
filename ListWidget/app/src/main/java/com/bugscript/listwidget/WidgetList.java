@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.bugscript.listwidget.services.ChangeContentsService;
 
 /**
  * Implementation of App Widget functionality.

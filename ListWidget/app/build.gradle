@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.bugscript.listwidget"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -25,4 +25,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'net.simonvt.schematic:schematic:0.6.3'
+    compile 'net.simonvt.schematic:schematic:{latest-version}'
+    annotationProcessor 'net.simonvt.schematic:schematic-compiler:{latest-version}'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    annotationProcessor 'net.simonvt.schematic:schematic-compiler:0.6.3'
 }
