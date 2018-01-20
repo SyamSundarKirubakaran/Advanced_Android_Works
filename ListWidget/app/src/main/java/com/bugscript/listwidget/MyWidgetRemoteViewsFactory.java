@@ -69,6 +69,8 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
         }
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.collection_widget_list_item);
         rv.setTextViewText(R.id.widgetItemTaskNameLabel, mCursor.getString(2));
+        rv.setTextViewText(R.id.quanty,mCursor.getString(4));
+        rv.setTextViewText(R.id.measu,mCursor.getString(3));
 
         Intent fillInIntent = new Intent();
         fillInIntent.putExtra(WidgetList.EXTRA_LABEL, mCursor.getString(2));

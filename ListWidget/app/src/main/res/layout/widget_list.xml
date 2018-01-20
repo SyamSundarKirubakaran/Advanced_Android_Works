@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:id="@+id/widgetTitleLabel"
-            android:text="INGREDIENTS"
+            android:text="Mr.CHEFF"
             android:textColor="@color/white"
             android:background="@color/colorPrimary"
             android:textSize="18dp"
