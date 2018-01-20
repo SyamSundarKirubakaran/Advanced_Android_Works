@@ -2,6 +2,7 @@ package com.bugscript.listwidget;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -47,29 +48,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button=findViewById(R.id.button);
         radioGroup=findViewById(R.id.radioGroup);
-        radioGroup.check(R.id.nutella);
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("ingrad_pref",0);
+        final SharedPreferences.Editor editor=sharedPreferences.edit();
 
-//        Cursor sample=getContentResolver().query(ContractClass.nameClass.CONTENT_URI,
-//                null,
-//                null,
-//                null,
-//                null
-//        );
-//        sample.moveToNext();
-//        switch (sample.getString(sample.getColumnIndex(ContractClass.nameClass.COLUMN_INGRED_KEY))){
-//            case "Nutella":
-//                radioGroup.check(R.id.nutella);
-//                break;
-//            case "Brownies":
-//                radioGroup.check(R.id.brownies);
-//                break;
-//            case "Yellow Cake":
-//                radioGroup.check(R.id.yellow);
-//                break;
-//            case "Cheese Cake":
-//                radioGroup.check(R.id.cheesecake);
-//                break;
-//        }
+
+        switch (sharedPreferences.getInt("selection",0)){
+            case 0:
+                radioGroup.check(R.id.nutella);
+                universalSelection="0";
+                WidgetList.sendRefreshBroadcast(MainActivity.this);
+                break;
+            case 1:
+                radioGroup.check(R.id.brownies);
+                universalSelection="1";
+                WidgetList.sendRefreshBroadcast(MainActivity.this);
+                break;
+            case 2:
+                radioGroup.check(R.id.yellow);
+                universalSelection="2";
+                WidgetList.sendRefreshBroadcast(MainActivity.this);
+                break;
+            case 3:
+                radioGroup.check(R.id.cheesecake);
+                universalSelection="3";
+                WidgetList.sendRefreshBroadcast(MainActivity.this);
+                break;
+        }
 
         getContentsFromJson();
 
@@ -79,18 +83,26 @@ public class MainActivity extends AppCompatActivity {
                 switch (checkedId){
                     case R.id.nutella:
                         universalSelection="0";
+                        editor.putInt("selection",0);
+                        editor.commit();
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.brownies:
                         universalSelection="1";
+                        editor.putInt("selection",1);
+                        editor.commit();
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.yellow:
                         universalSelection="2";
+                        editor.putInt("selection",2);
+                        editor.commit();
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.cheesecake:
                         universalSelection="3";
+                        editor.putInt("selection",3);
+                        editor.commit();
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                 }
@@ -165,20 +177,6 @@ public class MainActivity extends AppCompatActivity {
                     thumbnailURL[i][j]=jw.getString("thumbnailURL");
                 }
             }
-//            ChangeContentsService.startChangingList(this);
-//            ContentValues contentValues = new ContentValues();
-//            for(int i=0;i<dishNames.length;i++){
-//                for(int j=0;j<ingredient[i].length;j++){
-//                    if(ingredient[i][j]!=null) {
-//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_KEY, i);
-//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_VALUE, ingredient[i][j]);
-//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_MEASURE, measure[i][j]);
-//                        contentValues.put(ContractClass.nameClass.COLUMN_INGRED_QUANTITY, quantity[i][j]);
-//                        getContentResolver().insert(ContractClass.nameClass.CONTENT_URI, contentValues);
-//                    }
-//                }
-//            }
-
         }catch (JSONException e){
             Toast.makeText(MainActivity.this,"JSON parsing Exception",Toast.LENGTH_SHORT).show();
         }
