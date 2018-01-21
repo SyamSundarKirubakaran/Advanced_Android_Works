@@ -61,21 +61,25 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup.check(R.id.nutella);
                 universalSelection="0";
                 WidgetList.sendRefreshBroadcast(MainActivity.this);
+                ChangeTitleService.startChanging(MainActivity.this);
                 break;
             case 1:
                 radioGroup.check(R.id.brownies);
                 universalSelection="1";
                 WidgetList.sendRefreshBroadcast(MainActivity.this);
+                ChangeTitleService.startChanging(MainActivity.this);
                 break;
             case 2:
                 radioGroup.check(R.id.yellow);
                 universalSelection="2";
                 WidgetList.sendRefreshBroadcast(MainActivity.this);
+                ChangeTitleService.startChanging(MainActivity.this);
                 break;
             case 3:
                 radioGroup.check(R.id.cheesecake);
                 universalSelection="3";
                 WidgetList.sendRefreshBroadcast(MainActivity.this);
+                ChangeTitleService.startChanging(MainActivity.this);
                 break;
         }
 
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nutella:
                         universalSelection="0";
                         editor.putInt("selection",0);
+                        editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
                         editor.commit();
                         ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.brownies:
                         universalSelection="1";
                         editor.putInt("selection",1);
+                        editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
                         editor.commit();
                         ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
@@ -107,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.yellow:
                         universalSelection="2";
                         editor.putInt("selection",2);
+                        editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
                         editor.commit();
                         ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.cheesecake:
                         universalSelection="3";
                         editor.putInt("selection",3);
+                        editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
                         editor.commit();
                         ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);

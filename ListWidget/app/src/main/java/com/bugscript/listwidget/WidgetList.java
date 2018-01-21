@@ -6,7 +6,9 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
@@ -24,8 +26,10 @@ public class WidgetList extends AppWidgetProvider {
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_list);
+        SharedPreferences sharedPreferences=context.getSharedPreferences("ingrad_pref",0);
+        String RecentlyUpdated=sharedPreferences.getString("dishName","MR.BAKER");
 
-        views.setTextViewText(R.id.widgetTitleLabel,MainActivity.dishNames[Integer.parseInt(MainActivity.universalSelection)]);
+        views.setTextViewText(R.id.widgetTitleLabel,RecentlyUpdated+"");
         Intent intent = new Intent(context, MyWidgetRemoteViewsService.class);
         views.setRemoteAdapter(R.id.widgetListView, intent);
         appWidgetManager.updateAppWidget(appWidgetId, views);
