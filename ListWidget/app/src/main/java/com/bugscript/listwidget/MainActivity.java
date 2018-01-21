@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public static String [] servings;
     public static String universalSelection="0";
     private URL url;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,36 +53,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button=findViewById(R.id.button);
         radioGroup=findViewById(R.id.radioGroup);
-        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("ingrad_pref",0);
+        sharedPreferences=getApplicationContext().getSharedPreferences("ingrad_pref",0);
         final SharedPreferences.Editor editor=sharedPreferences.edit();
-
-
-        switch (sharedPreferences.getInt("selection",0)){
-            case 0:
-                radioGroup.check(R.id.nutella);
-                universalSelection="0";
-                WidgetList.sendRefreshBroadcast(MainActivity.this);
-                ChangeTitleService.startChanging(MainActivity.this);
-                break;
-            case 1:
-                radioGroup.check(R.id.brownies);
-                universalSelection="1";
-                WidgetList.sendRefreshBroadcast(MainActivity.this);
-                ChangeTitleService.startChanging(MainActivity.this);
-                break;
-            case 2:
-                radioGroup.check(R.id.yellow);
-                universalSelection="2";
-                WidgetList.sendRefreshBroadcast(MainActivity.this);
-                ChangeTitleService.startChanging(MainActivity.this);
-                break;
-            case 3:
-                radioGroup.check(R.id.cheesecake);
-                universalSelection="3";
-                WidgetList.sendRefreshBroadcast(MainActivity.this);
-                ChangeTitleService.startChanging(MainActivity.this);
-                break;
-        }
 
         try{
             url=new URL("https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json");
@@ -89,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,"URL not Recognized..",Toast.LENGTH_LONG).show();
         }
         new GetRecipies().execute(url);
+
+
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -217,6 +192,45 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            final SharedPreferences.Editor editor=sharedPreferences.edit();
+            switch (sharedPreferences.getInt("selection",0)){
+                case 0:
+                    radioGroup.check(R.id.nutella);
+                    universalSelection="0";
+                    editor.putInt("selection",0);
+                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
+                    editor.commit();
+                    WidgetList.sendRefreshBroadcast(MainActivity.this);
+                    ChangeTitleService.startChanging(MainActivity.this);
+                    break;
+                case 1:
+                    radioGroup.check(R.id.brownies);
+                    universalSelection="1";
+                    editor.putInt("selection",0);
+                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
+                    editor.commit();
+                    WidgetList.sendRefreshBroadcast(MainActivity.this);
+                    ChangeTitleService.startChanging(MainActivity.this);
+                    break;
+                case 2:
+                    radioGroup.check(R.id.yellow);
+                    universalSelection="2";
+                    editor.putInt("selection",0);
+                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
+                    editor.commit();
+                    WidgetList.sendRefreshBroadcast(MainActivity.this);
+                    ChangeTitleService.startChanging(MainActivity.this);
+                    break;
+                case 3:
+                    radioGroup.check(R.id.cheesecake);
+                    universalSelection="3";
+                    editor.putInt("selection",0);
+                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
+                    editor.commit();
+                    WidgetList.sendRefreshBroadcast(MainActivity.this);
+                    ChangeTitleService.startChanging(MainActivity.this);
+                    break;
+            }
         }
     }
 
