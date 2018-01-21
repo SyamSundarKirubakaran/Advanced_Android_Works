@@ -2,6 +2,7 @@ package com.bugscript.listwidget;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 /**

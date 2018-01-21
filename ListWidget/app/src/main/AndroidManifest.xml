@@ -29,6 +29,7 @@
                 android:resource="@xml/widget_list_info" />
         </receiver>
 
+        <service android:name=".services.ChangeTitleService" />
 
         <provider
             android:authorities="com.bugscript.listwidget"

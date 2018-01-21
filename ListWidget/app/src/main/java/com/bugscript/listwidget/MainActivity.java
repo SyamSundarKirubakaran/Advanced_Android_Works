@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bugscript.listwidget.Utilities.NetworkUtils;
 import com.bugscript.listwidget.provider.ContractClass;
+import com.bugscript.listwidget.services.ChangeTitleService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,24 +94,28 @@ public class MainActivity extends AppCompatActivity {
                         universalSelection="0";
                         editor.putInt("selection",0);
                         editor.commit();
+                        ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.brownies:
                         universalSelection="1";
                         editor.putInt("selection",1);
                         editor.commit();
+                        ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.yellow:
                         universalSelection="2";
                         editor.putInt("selection",2);
                         editor.commit();
+                        ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                     case R.id.cheesecake:
                         universalSelection="3";
                         editor.putInt("selection",3);
                         editor.commit();
+                        ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
                 }

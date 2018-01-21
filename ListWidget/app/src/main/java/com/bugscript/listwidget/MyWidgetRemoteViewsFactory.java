@@ -25,7 +25,6 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
 
     @Override
     public void onCreate() {
-
     }
 
     @Override
@@ -67,6 +66,7 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
                 mCursor == null || !mCursor.moveToPosition(position)) {
             return null;
         }
+
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.collection_widget_list_item);
         rv.setTextViewText(R.id.widgetItemTaskNameLabel, mCursor.getString(2));
         rv.setTextViewText(R.id.quanty,mCursor.getString(4));

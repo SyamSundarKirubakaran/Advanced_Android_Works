@@ -1,11 +1,16 @@
 package com.bugscript.listwidget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.widget.RemoteViews;
+import android.widget.TextView;
+
+import com.bugscript.listwidget.services.ChangeTitleService;
 
 
 /**
@@ -15,19 +20,24 @@ public class WidgetList extends AppWidgetProvider {
 
     public static final String EXTRA_LABEL = "TASK_TEXT";
 
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
+
+        // Construct the RemoteViews object
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_list);
+
+        views.setTextViewText(R.id.widgetTitleLabel,MainActivity.dishNames[Integer.parseInt(MainActivity.universalSelection)]);
+        Intent intent = new Intent(context, MyWidgetRemoteViewsService.class);
+        views.setRemoteAdapter(R.id.widgetListView, intent);
+        appWidgetManager.updateAppWidget(appWidgetId, views);
+
+        // Instruct the widget manager to update the widget
+        appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        for (int appWidgetId : appWidgetIds) {
-            RemoteViews views = new RemoteViews(
-
-                    context.getPackageName(),
-                    R.layout.widget_list
-
-            );
-            Intent intent = new Intent(context, MyWidgetRemoteViewsService.class);
-            views.setRemoteAdapter(R.id.widgetListView, intent);
-            appWidgetManager.updateAppWidget(appWidgetId, views);
-        }
+        ChangeTitleService.startChanging(context);
     }
 
 
@@ -35,6 +45,12 @@ public class WidgetList extends AppWidgetProvider {
         Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         intent.setComponent(new ComponentName(context, WidgetList.class));
         context.sendBroadcast(intent);
+    }
+
+    public static void updateWidgetTitle(Context context,AppWidgetManager appWidgetManager, int[] appWidgetIds){
+        for (int appWidgetId : appWidgetIds) {
+            updateAppWidget(context, appWidgetManager, appWidgetId);
+        }
     }
 
 
