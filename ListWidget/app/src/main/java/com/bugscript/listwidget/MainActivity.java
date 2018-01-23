@@ -101,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
                         ChangeTitleService.startChanging(MainActivity.this);
                         WidgetList.sendRefreshBroadcast(MainActivity.this);
                         break;
+                    case R.id.none:
+                        universalSelection="4";
+                        editor.putInt("selection",4);
+                        editor.putString("dishName","NO FAVORITES");
+                        editor.commit();
+                        ChangeTitleService.startChanging(MainActivity.this);
+                        WidgetList.sendRefreshBroadcast(MainActivity.this);
+                        break;
                 }
             }
         });
@@ -192,43 +200,32 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            final SharedPreferences.Editor editor=sharedPreferences.edit();
             switch (sharedPreferences.getInt("selection",0)){
                 case 0:
                     radioGroup.check(R.id.nutella);
-                    universalSelection="0";
-                    editor.putInt("selection",0);
-                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
-                    editor.commit();
                     WidgetList.sendRefreshBroadcast(MainActivity.this);
                     ChangeTitleService.startChanging(MainActivity.this);
                     break;
                 case 1:
                     radioGroup.check(R.id.brownies);
-                    universalSelection="1";
-                    editor.putInt("selection",0);
-                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
-                    editor.commit();
                     WidgetList.sendRefreshBroadcast(MainActivity.this);
                     ChangeTitleService.startChanging(MainActivity.this);
                     break;
                 case 2:
                     radioGroup.check(R.id.yellow);
                     universalSelection="2";
-                    editor.putInt("selection",0);
-                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
-                    editor.commit();
                     WidgetList.sendRefreshBroadcast(MainActivity.this);
                     ChangeTitleService.startChanging(MainActivity.this);
                     break;
                 case 3:
                     radioGroup.check(R.id.cheesecake);
-                    universalSelection="3";
-                    editor.putInt("selection",0);
-                    editor.putString("dishName",dishNames[Integer.parseInt(universalSelection)]);
-                    editor.commit();
                     WidgetList.sendRefreshBroadcast(MainActivity.this);
                     ChangeTitleService.startChanging(MainActivity.this);
+                    break;
+                case 4:
+                    radioGroup.check(R.id.none);
+                    ChangeTitleService.startChanging(MainActivity.this);
+                    WidgetList.sendRefreshBroadcast(MainActivity.this);
                     break;
             }
         }
