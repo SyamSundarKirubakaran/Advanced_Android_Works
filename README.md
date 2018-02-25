@@ -9,7 +9,7 @@ Repository that showcases Android simple yet Best Practices with Intermediate to
 **#2 [AndroidDraw](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/AndroidDraw)**<br /><br />
 **#3 [ContentProvider](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ContentProvider)**
 <br /><br />
-**#4 [ExpressoExpress](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ExpressoExpress)**
+**#4 [EspressoExpress](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ExpressoExpress)**
 <br /><br />
 **#5 [FirebaseGoogleSign](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/FirebaseGoogleSign)**
 <br /><br />
@@ -23,18 +23,13 @@ Repository that showcases Android simple yet Best Practices with Intermediate to
 
 
 ## 1. AndroidAnim:
-An app used to find the followers in Github by supplying his/her accounts user name.(**NOTE:** The app can only show 30 followers at a time since the **GitHub API** JSON Objects are restricted to 30 for an URL). <br />
+An app that illustrates the basics of a single entity transition between two activities. In this case an image is shared between two activities that acts to be transited between the two.<br />
 
 **You'll Learn:**
-* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
-* JSON parsing
-* Simple List view
-* Array List and Adapters<br />
+* Working with animations on android
+* Shared Element transition
+* Image cropping<br />
 
-**Github URL for followers Retival:** <br />
-<br />
-`https://api.github.com/users/ <<User name>> /followers` <br />
-<br />
 **Show case:**
 <br />
 <p align="center">
@@ -42,75 +37,49 @@ An app used to find the followers in Github by supplying his/her accounts user n
 </p>
 
 ## 2. AndroidDraw:
-[In Progress](https://img.shields.io/badge/in%20progress-true-yellow.svg) <br />
-A simple app that download the image from the given URL and displays it in an image view using **Picasso** library to fetch the image<br />
+![In Progress](https://img.shields.io/badge/in%20progress-true-yellow.svg) <br />
+A simple app that demonstates how to draw using android's built in tools and external libraries that helps drawing on screen.<br />
 
 ## 3. ContentProvider:
-An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies and inflate the activities with the data of those movies accordingly. <br />
+An app that uses Content provider backed up with SQLite Database to access and edit the data stored in the Database using Content Provider <br />
 
 **You'll Learn:**
-* Working with [Movies API](https://www.themoviedb.org/?language=en)
-* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
-* JSON parsing
-* Simple List view
-* Array List and Adapters<br />
+* Working with Content Providers
+* SQLite Queries
+* Providing Permissions
+* ListView
+* Content Values<br />
 
-**Popular movies in the form of JSON:** <br />
-<br />
-`https://api.themoviedb.org/3/movie/popular?api_key= <<YOUR_API_KEY>> ` <br />
-<br />
-**Note:**<br />
-Get your API key and place it in the strings.xml file in the resource directory.<br />
-``` xml
-<string name="API_Key">Your API Key</string>
-```
 **Show case:**<br />
 <p align="center">
   <img src="asserts/content_pro.gif">
 </p>
 
-## 4. ExpressoExpress:
-An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies and Top rated movies in realtime and inflate the activities with the data of those movies accordingly. <br />
+## 4. EspressoExpress:
+An app that uses Espresso testing mechanism for UI Testing in Android. <br />
 
 **You'll Learn:**
-* Working with [Movies API](https://www.themoviedb.org/?language=en)
-* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
-* JSON parsing
-* Scrolling view
-* Picasso
-* Bottom Tabbed Activity<br />
+* Working with Espresso UI testing
+* Effective use of [Cheat Sheet](https://google.github.io/android-testing-support-library/downloads/espresso-cheat-sheet-2.1.0.pdf) fot Espresso
+* To Maintain UI consistency<br />
 
-**Popular movies in the form of JSON:** <br />
-<br />
-`https://api.themoviedb.org/3/movie/popular?api_key= <<YOUR_API_KEY>> ` <br />
-<br />
-`https://api.themoviedb.org/3/movie/top_rated?api_key= <<YOUR_API_KEY>> ` <br />
-<br />
-**Note:**<br />
-Get your API key and place it in the strings.xml file in the resource directory.(NOTE: Marked as TODO in strings.xml file)<br />
-``` xml
-<string name="API_Key">Your API Key</string>
-```
 **Show case:**<br />
 <p align="center">
   <img src="asserts/test.gif">
 </p>
 
 ## 5. FirebaseGoogleSign:
-An app that uses the [SQLite](https://www.sqlite.org/) database to store data premanently and retrieve it when ever necessary.<br />
+An app that uses Firebase Signin Mechanism backedup with Google APIs to provide your app the access rights to access the basic contents of ypur users priliminary information<br />
 
 **You'll Learn:**
-* Working with [SQLite Databases](https://www.sqlite.org/)
-* [SQL Query](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html)
-* Data Presistence
-* List View Updation after specific operation on the Database<br />
+* Working with [Firebase](https://firebase.google.com/)
+* Google APIs for Authentication
+* Firebase Authentication
+* Obtain UserID to identify an each and every unique user<br />
 
 **Base Understanding for:** <br />
-* Content Providers
-* Working with URIs to query out from Database
-
-**Note:**<br />
-Mainly focuses on Data Presistence.
+* Firebase
+* APIs
 
 **Show case:**<br />
 <p align="center">
@@ -118,27 +87,28 @@ Mainly focuses on Data Presistence.
 </p>
 
 ## 6. FlexibleFragments:
-An app that illustrates the working of android lifecycle and which preserves data between screen orientation changes using onSavedInstanceStates and callbacks.<br />
+An app that illustrates the working of Fragments and how they can be altered in realtime when the orientation changes and also to help understand the inter fragment communication.<br />
 
 **You'll Learn:**
-* Short term Data presistence
-* Lifecycle callbacks
-* onSavedInstanceState method to preserve data between orientation shift that leads to data teardowns.<br />
+* Fragments
+* Handle orientation Changes
+* Find of the device in tablet or a mobile device.
+* Inter Fragment communication<br />
 
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/frag_tab.gif">
   <img src="asserts/frag_phone.gif">
+  <img src="asserts/frag_tab.gif">
 </p>
 
 ## 7. ListWidget:
-An app that illustrates how to manage users Preferences for you app and also helps to store users preference so that those preferences remainds default even when the app is relaunched.<br />
+An app that illustrates creation of widgets that uses list view and how the widgets list items gets updated in realtimes as the context in the app changes to which the widget points to changes.<br />
 
 **You'll Learn:**
-* Short term Data presistence
-* Setting up Settings Activity
-* Check box Preferences, List Preferences and Edit text Preferences.
-* Handling and Managing user's preferences so that UI can be changed accordingly.<br />
+* Working with widgets
+* List View
+* Working with remote objects
+* Handling and Managing user's preferences to update widget.<br />
 
 **Show case:**<br />
 <p align="center">
@@ -146,25 +116,13 @@ An app that illustrates how to manage users Preferences for you app and also hel
 </p>
 
 ## 8. MediaPlayback:
-An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies,Top rated,Now playing and Up coming movies in realtime and inflate the activities with the data of those movies accordingly. <br />
+An app that uses Exoplayer library to access and stream media from an URL into your app and provides UI to control the streaming of media. <br />
 
 **You'll Learn:**
-* Working with [Movies API](https://www.themoviedb.org/?language=en)
-* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
-* JSON parsing
-* Scrolling view
-* Picasso
-* Bottom Navigation Bar
-* Grid View
-* Play videos in YouTube using implicit intents
-* Favorite movies tracking
-* Content Providers
-* SQLite Databases
-* Working with URIs
-* Using share Intent
-* Handle Requests in absence of network
-* Offline Storage of favorite movies
-* Bug fix<br />
+* Working with Exoplayer.
+* Preserve view location if orientation changes.
+* Handle Orientation change.
+* Working with Video URL.<br />
 
 **Show case:**<br />
 <p align="center">
@@ -172,25 +130,12 @@ An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to
 </p>
 
 ## 9. WidgetGadget:
-An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies,Top rated,Now playing and Up coming movies in realtime and inflate the activities with the data of those movies accordingly. <br />
+An app that illustrates creation of widgets that uses an image and changes the image placed inside the widget based on the user's preference <br />
 
 **You'll Learn:**
-* Working with [Movies API](https://www.themoviedb.org/?language=en)
-* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
-* JSON parsing
-* Scrolling view
-* Picasso
-* Bottom Navigation Bar
-* Grid View
-* Play videos in YouTube using implicit intents
-* Favorite movies tracking
-* Content Providers
-* SQLite Databases
-* Working with URIs
-* Using share Intent
-* Handle Requests in absence of network
-* Offline Storage of favorite movies
-* Bug fix<br />
+* Working with Widgets.
+* Hangle Remote Image Views.
+* Handle Wigets size when placed on the home screen.<br />
 
 **Show case:**<br />
 <p align="center">
