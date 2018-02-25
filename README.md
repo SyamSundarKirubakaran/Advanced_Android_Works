@@ -96,8 +96,12 @@ An app that illustrates the working of Fragments and how they can be altered in 
 * Inter Fragment communication<br />
 
 **Show case:**<br />
+**Phone:**<br />
 <p align="center">
   <img src="asserts/frag_phone.gif">
+</p><br />
+**Tablet:**<br />
+<p align="center">
   <img src="asserts/frag_tab.gif">
 </p>
 
