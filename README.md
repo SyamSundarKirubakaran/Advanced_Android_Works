@@ -4,27 +4,25 @@
 Repository that showcases Android simple yet Best Practices with Intermediate to Advanced Project Creation skills
 
 ## Contents
-**#1 [Internet Interact](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/InternetInteract)**
+**#1 [AndroidAnim](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/AndroidAnim)**
 <br /><br />
-**#2 [Pick Picasso](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/pickpicasso)**<br /><br />
-**#3 [Move Movies](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/MoveMovie)**
+**#2 [AndroidDraw](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/AndroidDraw)**<br /><br />
+**#3 [ContentProvider](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ContentProvider)**
 <br /><br />
-**#4 [Movie Feast](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/PosterGrid) @Milestone_Project #1** 
--Nano Degree Submission - Popular Movies Stage I <br />
-(sub-repo name: [PosterGrid](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/PosterGrid)) 
+**#4 [ExpressoExpress](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ExpressoExpress)**
 <br /><br />
-**#5 [SQLite Light](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/SQLiteLight)**
+**#5 [FirebaseGoogleSign](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/FirebaseGoogleSign)**
 <br /><br />
-**#6 [Lifecycle Lemma](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/LifecycleLemma)**
+**#6 [FlexibleFragments](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/FlexibleFragments)**
 <br /><br />
-**#7 [Preferences Preserved](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/master/PreferencePreserved)**
+**#7 [ListWidget](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/ListWidget)**
 <br /><br />
-**#8 [Movie Feast_2](https://github.com/SyamSundarKirubakaran/Popular-Movies-Stage-II)
-@Milestone_Project #2**
--Nano Degree Submission - Popular Movies Stage I <br />
-(In [movies2](https://github.com/SyamSundarKirubakaran/AndroidWorks/tree/movies2) branch)
+**#8 [MediaPlayback](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/MediaPlayback)**
+<br /><br />
+**#8 [WidgetGadget](https://github.com/SyamSundarKirubakaran/Advanced_Android_Works/tree/master/WidgetGadget)**
 
-## 1. Internet Interact:
+
+## 1. AndroidAnim:
 An app used to find the followers in Github by supplying his/her accounts user name.(**NOTE:** The app can only show 30 followers at a time since the **GitHub API** JSON Objects are restricted to 30 for an URL). <br />
 
 **You'll Learn:**
@@ -40,29 +38,14 @@ An app used to find the followers in Github by supplying his/her accounts user n
 **Show case:**
 <br />
 <p align="center">
-  <img src="asserts/gifs/internet_interact.gif">
+  <img src="asserts/anim.gif">
 </p>
 
-## 2. Pick Picasso:
+## 2. AndroidDraw:
+[In Progress](https://img.shields.io/badge/in%20progress-true-yellow.svg) <br />
 A simple app that download the image from the given URL and displays it in an image view using **Picasso** library to fetch the image<br />
 
-**You'll Learn:**
-* [Picasso](http://square.github.io/picasso/)
-* On click handling <br />
-
-**URL used for image retival** <br />
-<br />
-`https://image.tmdb.org/t/p/w500//oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg` <br />
-<br />
-Replace the above URL with our own.<br />
-<br />
-**Show case:**
-<br />
-<p align="center">
-  <img src="asserts/gifs/picasso_pick.gif">
-</p>
-
-## 3. Move Movies:
+## 3. ContentProvider:
 An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies and inflate the activities with the data of those movies accordingly. <br />
 
 **You'll Learn:**
@@ -83,10 +66,10 @@ Get your API key and place it in the strings.xml file in the resource directory.
 ```
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/gifs/movie.gif">
+  <img src="asserts/content_pro.gif">
 </p>
 
-## 4. Movie Feast:
+## 4. ExpressoExpress:
 An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies and Top rated movies in realtime and inflate the activities with the data of those movies accordingly. <br />
 
 **You'll Learn:**
@@ -110,10 +93,10 @@ Get your API key and place it in the strings.xml file in the resource directory.
 ```
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/gifs/movie_feast.gif">
+  <img src="asserts/test.gif">
 </p>
 
-## 5. SQLite Light:
+## 5. FirebaseGoogleSign:
 An app that uses the [SQLite](https://www.sqlite.org/) database to store data premanently and retrieve it when ever necessary.<br />
 
 **You'll Learn:**
@@ -131,10 +114,10 @@ Mainly focuses on Data Presistence.
 
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/gifs/sqlite_light.gif">
+  <img src="asserts/signin.gif">
 </p>
 
-## 6. Lifecycle Lemma:
+## 6. FlexibleFragments:
 An app that illustrates the working of android lifecycle and which preserves data between screen orientation changes using onSavedInstanceStates and callbacks.<br />
 
 **You'll Learn:**
@@ -144,10 +127,11 @@ An app that illustrates the working of android lifecycle and which preserves dat
 
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/gifs/Lifecycle_lemma.gif">
+  <img src="asserts/frag_tab.gif">
+  <img src="asserts/frag_phone.gif">
 </p>
 
-## 7. Preferences Preserved:
+## 7. ListWidget:
 An app that illustrates how to manage users Preferences for you app and also helps to store users preference so that those preferences remainds default even when the app is relaunched.<br />
 
 **You'll Learn:**
@@ -158,10 +142,10 @@ An app that illustrates how to manage users Preferences for you app and also hel
 
 **Show case:**<br />
 <p align="center">
-  <img src="asserts/gifs/prefs.gif">
+  <img src="asserts/widget_list.gif">
 </p>
 
-## 8. Movie Feast 2:
+## 8. MediaPlayback:
 An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies,Top rated,Now playing and Up coming movies in realtime and inflate the activities with the data of those movies accordingly. <br />
 
 **You'll Learn:**
@@ -181,3 +165,34 @@ An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to
 * Handle Requests in absence of network
 * Offline Storage of favorite movies
 * Bug fix<br />
+
+**Show case:**<br />
+<p align="center">
+  <img src="asserts/exoplayer.gif">
+</p>
+
+## 9. WidgetGadget:
+An app that uses the [Movies.db API](https://www.themoviedb.org/?language=en) to find the popular movies,Top rated,Now playing and Up coming movies in realtime and inflate the activities with the data of those movies accordingly. <br />
+
+**You'll Learn:**
+* Working with [Movies API](https://www.themoviedb.org/?language=en)
+* [Networking in Android](https://developer.android.com/training/basics/network-ops/connecting.html)
+* JSON parsing
+* Scrolling view
+* Picasso
+* Bottom Navigation Bar
+* Grid View
+* Play videos in YouTube using implicit intents
+* Favorite movies tracking
+* Content Providers
+* SQLite Databases
+* Working with URIs
+* Using share Intent
+* Handle Requests in absence of network
+* Offline Storage of favorite movies
+* Bug fix<br />
+
+**Show case:**<br />
+<p align="center">
+  <img src="asserts/widget_pic.gif">
+</p>
