@@ -37,8 +37,18 @@ An app that illustrates the basics of a single entity transition between two act
 </p>
 
 ## 2. AndroidDraw:
-![In Progress](https://img.shields.io/badge/in%20progress-true-yellow.svg) <br />
-A simple app that demonstates how to draw using android's built in tools and external libraries that helps drawing on screen.<br />
+A simple app that demonstates how to draw Pie Charts and graphical representation of data using a related android library.<br />
+
+**You'll Learn:**
+* Working with Libraries
+* Data related in creating Pie Charts
+* Graphical representation of datasets<br />
+
+**Show case:**<br />
+<p align="center">
+  <img src="asserts/pie.gif">
+</p>
+
 
 ## 3. ContentProvider:
 An app that uses Content provider backed up with SQLite Database to access and edit the data stored in the Database using Content Provider <br />
